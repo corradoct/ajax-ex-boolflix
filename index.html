@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Boolflix</title>
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Handlebars -->
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+    <!-- Start general wrapper -->
+    <div class="wrapper">
+
+      <!-- Start search wrapper -->
+      <div class="searchWrapper">
+        <h2>Cerca il tuo film preferito</h2>
+        <input id="searchBar" type="text" placeholder="Inserisci il titolo del film">
+        <button id="search" type="button">Cerca</button>
+      </div>
+      <!-- End search wrapper -->
+
+      <!-- Start movies wrapper -->
+      <div class="moviesWrapper">
+        <h2>Film trovati</h2>
+
+        <!-- Start movies list -->
+        <ul class="moviesList">
+
+        </ul>
+        <!-- End movies list -->
+
+      </div>
+      <!-- End movies wrapper -->
+
+    </div>
+    <!-- End general wrapper -->
+
+    <!-- Script Javascript -->
+    <script type="text/javascript" src="js/script.js"></script>
+
+    <!-- Handlebars template -->
+    <script id="movies-template" type="text/x-handlebars-template">
+      <li class="square">
+        <span>{{title}}</span>
+        <span>{{originalTitle}}</span>
+        <span>{{language}}</span>
+        <span>{{vote}}</span>
+      </li>
+    </script>
+    <!-- End handlebars template -->
+
+  </body>
+</html>
