@@ -8,6 +8,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Handlebars -->
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
   </head>
@@ -41,15 +43,16 @@
     <!-- End general wrapper -->
 
     <!-- Script Javascript -->
+    <script type="text/javascript" src="js\function.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
 
     <!-- Handlebars template -->
     <script id="movies-template" type="text/x-handlebars-template">
       <li class="square">
-        <span>{{title}}</span>
-        <span>{{originalTitle}}</span>
-        <span>{{language}}</span>
-        <span>{{vote}}</span>
+        <span><h4>Titolo</h4>{{title}}</span>
+        <span><h4>Titolo originale</h4>{{originalTitle}}</span>
+        <span><h4>Lingua originale</h4>{{language}}</span>
+        <span><h4>Voto medio</h4>{{vote}}</span>
       </li>
     </script>
     <!-- End handlebars template -->
