@@ -1,6 +1,6 @@
 $(document).ready(
   function() {
-    
+
     // Creo l'evento al click del bottone
     $('#search').on('click',
       function() {
