@@ -48,5 +48,9 @@ ul {
   display: block;
   padding: 10px 0;
 }
+img.poster {
+  height: 40%;
+  width: 100%;
+}
 
 /* FINE REGOLE MAIN */

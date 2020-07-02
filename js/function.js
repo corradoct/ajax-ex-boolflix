@@ -22,6 +22,7 @@ function ajaxCall(userInput) {
       },
       success: function(dataResponse) {
         var results = dataResponse.results;
+        console.log(results);
         if (results.length > 0) {
           printList(results);
         } else {
@@ -45,24 +46,15 @@ function ajaxCall(userInput) {
 function printList(results) {
   for (var i = 0; i < results.length; i++) {
     var singleMovie = results[i];
-    var genre = singleMovie.media_type;
-    if (genre !== 'person') {
+    if (singleMovie.media_type != 'person') {
       var source = $("#movies-template").html();
       var template = Handlebars.compile(source);
-      var title = '';
-      var originalTitle = '';
-      if (genre === 'movie') {
-        title = singleMovie.title;
-        originalTitle = singleMovie.original_title;
-      } else if (genre === 'tv') {
-        title = singleMovie.name;
-        originalTitle = singleMovie.original_name;
-      }
       var context = {
-        title: title,
-        originalTitle: originalTitle,
+        title: titleMovie(singleMovie.media_type),
+        originalTitle: originalTitleMovie(singleMovie.media_type),
         language: flags(singleMovie.original_language),
-        vote: voteStar(singleMovie.vote_average)
+        vote: voteStar(singleMovie.vote_average),
+        poster: posterMovie(singleMovie.poster_path)
       }
       var html = template(context);
       $('.moviesList').append(html);
@@ -134,4 +126,36 @@ function flags(language) {
     default: flag;
   }
   return flag;
+}
+
+function titleMovie(singleMovie) {
+  if (singleMovie != 'person') {
+    var title = '';
+    if (singleMovie === 'movie') {
+      title = singleMovie.title;
+    } else if (singleMovie === 'tv') {
+      title = singleMovie.name;
+    }
+  }
+  return title;
+}
+
+function originalTitleMovie(singleMovie) {
+  if (singleMovie != 'person') {
+    var originalTitle = '';
+    if (singleMovie === 'movie') {
+      originalTitle = singleMovie.original_title;
+    } else if (singleMovie === 'tv') {
+      originalTitle = singleMovie.original_name;
+    }
+  }
+  return originalTitle;
+}
+
+function posterMovie(poster) {
+  var posterMovie = '../img/immagine-non-disponibile.jpg';
+  if (poster != null) {
+    posterMovie = 'https://image.tmdb.org/t/p/w185' + poster;
+  }
+  return posterMovie;
 }
