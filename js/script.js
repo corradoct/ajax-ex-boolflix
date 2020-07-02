@@ -1,23 +1,22 @@
 $(document).ready(
   function() {
+    
     // Creo l'evento al click del bottone
     $('#search').on('click',
       function() {
-        // Creo le variabili per la chiamata ajax
-        var apiRequest = 'https://api.themoviedb.org/3/search/movie';
-        var apiKey = '0e5a6d3ef990d9d6758cc872b21ab676';
+        // Creo la variabile della ricerca utente
         var userInput = $('#searchBar').val();
-        var language = 'it-IT';
 
         // Resetto la lista se eventualmente ci sono già risultati
-        $('.moviesList').html('');
+        reset();
 
         // Se la barra di ricerca ha un valore avvio la chiamata ajax
         if (userInput !== '') {
           // Invoco la funzione per la chiamata ajax e gli passo le variabili per la richiesta
-          ajaxCall(apiRequest, apiKey, userInput, language);
+          ajaxCall(userInput);
         } else {  // Altrimenti do un messaggio di errore
-          alert('Non hai inserito il titolo');
+          var message = 'Non hai inserito nessuna parola';
+          printMessage(message);
         }
       }
     );
@@ -26,21 +25,19 @@ $(document).ready(
     $('#searchBar').keypress(
       function(event) {
         if (event.which === 13) {
-          // Creo le variabili per la chiamata ajax
-          var apiRequest = 'https://api.themoviedb.org/3/search/movie';
-          var apiKey = '0e5a6d3ef990d9d6758cc872b21ab676';
+          // Creo la variabile della ricerca utente
           var userInput = $('#searchBar').val();
-          var language = 'it-IT';
 
           // Resetto la lista se eventualmente ci sono già risultati
-          $('.moviesList').html('');
+          reset();
 
           // Se la barra di ricerca ha un valore avvio la chiamata ajax
           if (userInput !== '') {
             // Invoco la funzione per la chiamata ajax e gli passo le variabili per la richiesta
-            ajaxCall(apiRequest, apiKey, userInput, language);
+            ajaxCall(userInput);
           } else {  // Altrimenti do un messaggio di errore
-            alert('Non hai inserito il titolo');
+            var message = 'Non hai inserito nessuna parola';
+            printMessage(message);
           }
         }
       }
