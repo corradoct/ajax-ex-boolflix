@@ -9,24 +9,48 @@
 /* REGOLE GENERALI */
 .wrapper {
   width: 100%;
-  height: 100vh;
+  height: auto;
 }
 .square {
   border: 1px solid black;
   padding: 15px;
+  text-align: left;
+  font-size:13px;
+  overflow-y: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 ul {
   list-style: none;
 }
 /* FINE REGOLE GENERALI */
 
+/* REGOLE HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 10vh;
+  background-color: #000;
+}
+/* FINE REGOLE HEADER */
+
 /* REGOLE MAIN */
+main {
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+  color: #fff;
+}
+.logo h1,
+.searchWrapper p {
+  color: red;
+  padding: 10px 0;
+}
 .searchWrapper,
 .messageWrapper {
   padding: 0 20px;
-}
-.searchWrapper h2 {
-  padding: 10px 0;
 }
 .moviesWrapper {
   text-align: center;
@@ -38,19 +62,26 @@ ul {
 .moviesWrapper ul {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 .moviesWrapper ul li {
-  flex-basis: calc(90% / 5);
-  margin: 5px 0;
+  flex-basis: 342px;
+  height: 500px;
+  margin: 5px;
+  cursor: pointer;
 }
 .moviesWrapper .moviesList span {
   display: block;
-  padding: 10px 0;
 }
-img.poster {
-  height: 40%;
+.info {
+  display: none;
   width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 5px;
+}
+.square:hover .info {
+  display: block;
 }
 
 /* FINE REGOLE MAIN */

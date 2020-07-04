@@ -50,11 +50,12 @@ function printList(results) {
       var source = $("#movies-template").html();
       var template = Handlebars.compile(source);
       var context = {
-        title: titleMovie(singleMovie.media_type),
-        originalTitle: originalTitleMovie(singleMovie.media_type),
+        title: titleMovie(singleMovie),
+        originalTitle: originalTitleMovie(singleMovie),
         language: flags(singleMovie.original_language),
         vote: voteStar(singleMovie.vote_average),
-        poster: posterMovie(singleMovie.poster_path)
+        poster: posterMovie(singleMovie.poster_path),
+        overview: singleMovie.overview
       }
       var html = template(context);
       $('.moviesList').append(html);
@@ -128,34 +129,47 @@ function flags(language) {
   return flag;
 }
 
+// Funzione che genera il titolo del film in base al genere
+// Argomenti
+//          ==>
+//             singleMovie: indica l'oggetto del singolo film
+// Ritorna il titolo
 function titleMovie(singleMovie) {
-  if (singleMovie != 'person') {
-    var title = '';
-    if (singleMovie === 'movie') {
-      title = singleMovie.title;
-    } else if (singleMovie === 'tv') {
-      title = singleMovie.name;
-    }
+  var genre = singleMovie.media_type;
+  var title = '';
+  if (genre === 'movie') {
+    title = singleMovie.title;
+  } else if (genre === 'tv') {
+    title = singleMovie.name;
   }
   return title;
 }
 
+// Funzione che genera il titolo originale del film in base al genere
+// Argomenti
+//          ==>
+//             singleMovie: indica l'oggetto del singolo film
+// Ritorna il titolo originale
 function originalTitleMovie(singleMovie) {
-  if (singleMovie != 'person') {
-    var originalTitle = '';
-    if (singleMovie === 'movie') {
-      originalTitle = singleMovie.original_title;
-    } else if (singleMovie === 'tv') {
-      originalTitle = singleMovie.original_name;
-    }
+  var genre = singleMovie.media_type;
+  var originalTitle = '';
+  if (genre === 'movie') {
+    originalTitle = singleMovie.original_title;
+  } else if (genre === 'tv') {
+    originalTitle = singleMovie.original_name;
   }
   return originalTitle;
 }
 
+// Funzione che genera la copertina del film
+// Argomenti
+//          ==>
+//             poster: indica l'URL base della copertina
+// Ritorna l' URL completo della copertina
 function posterMovie(poster) {
   var posterMovie = '../img/immagine-non-disponibile.jpg';
   if (poster != null) {
-    posterMovie = 'https://image.tmdb.org/t/p/w185' + poster;
+    posterMovie = 'https://image.tmdb.org/t/p/w342' + poster;
   }
   return posterMovie;
 }

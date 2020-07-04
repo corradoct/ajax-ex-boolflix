@@ -18,31 +18,44 @@
     <!-- Start general wrapper -->
     <div class="wrapper">
 
-      <!-- Start search wrapper -->
-      <div class="searchWrapper">
-        <h2>Cerca il tuo film preferito</h2>
-        <input id="searchBar" type="text" placeholder="Inserisci il titolo del film">
-        <button id="search" type="button">Cerca</button>
-      </div>
-      <!-- End search wrapper -->
+      <!-- Start header -->
+      <header>
 
-      <!-- Start message wrapper -->
-      <div class="messageWrapper"></div>
-      <!-- End message wrapper -->
+        <!-- Start logo wrapper -->
+        <div class="logo">
+          <h1>BOOLFLIX</h1>
+        </div>
+        <!-- End logo wrapper -->
 
-      <!-- Start movies wrapper -->
-      <div class="moviesWrapper">
-        <h2>Film trovati</h2>
+        <!-- Start search wrapper -->
+        <div class="searchWrapper">
+          <p>Cerca il tuo film preferito</p>
+          <input id="searchBar" type="text" placeholder="Inserisci il titolo del film">
+          <button id="search" type="button">Cerca</button>
 
-        <!-- Start movies list -->
-        <ul class="moviesList">
+          <!-- Start message wrapper -->
+          <div class="messageWrapper"></div>
+          <!-- End message wrapper -->
+        </div>
+        <!-- End search wrapper -->
+      </header>
+      <!-- End header -->
 
-        </ul>
-        <!-- End movies list -->
+      <!-- Start main -->
+      <main>
+        <!-- Start movies wrapper -->
+        <div class="moviesWrapper">
 
-      </div>
-      <!-- End movies wrapper -->
+          <!-- Start movies list -->
+          <ul class="moviesList">
 
+          </ul>
+          <!-- End movies list -->
+
+        </div>
+        <!-- End movies wrapper -->
+      </main>
+      <!-- End main -->
     </div>
     <!-- End general wrapper -->
 
@@ -52,12 +65,14 @@
 
     <!-- Handlebars template -->
     <script id="movies-template" type="text/x-handlebars-template">
-      <li class="square">
-        <img class="poster" src="{{poster}}" alt="Poster Movie">
-        <span><h4>Titolo</h4>{{title}}</span>
-        <span><h4>Titolo originale</h4>{{originalTitle}}</span>
-        <span><h4>Lingua originale</h4>{{{language}}}</span>
-        <span><h4>Voto medio</h4>{{{vote}}}</span>
+      <li style="background-image: url({{poster}})" class="square">
+        <div class="info">
+          <span><h4>Titolo</h4>{{title}}</span>
+          <span><h4>Titolo originale</h4>{{originalTitle}}</span>
+          <span><h4>Lingua originale</h4>{{{language}}}</span>
+          <span><h4>Voto medio</h4>{{{vote}}}</span>
+          <p><h4>Overview</h4>{{overview}}</p>
+        </div>
       </li>
     </script>
 
